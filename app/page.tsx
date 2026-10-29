@@ -2,11 +2,9 @@ import { me, skills, categories, stockCredits } from '@/content/site'
 import { getMoments } from '@/lib/moments'
 import { getProjects } from '@/lib/projects'
 import Socials from '@/components/Socials'
+import { asset } from '@/lib/base'
 import ProjectBoard from '@/components/ProjectBoard'
 import Moments from '@/components/Moments'
-
-// Read the content folders on every request, so new projects, photos and moments appear without a rebuild.
-export const dynamic = 'force-dynamic'
 
 export default function Home() {
   const projects = getProjects()
@@ -14,7 +12,7 @@ export default function Home() {
   // Fill the last row of the moments wall with "your photo here" places (at least one), 4 per row.
   const slotCount = Math.max(1, (4 - (moments.length % 4)) % 4)
   const slots = Array.from({ length: slotCount }, (_, n) => ({ key: `slot-${n}`, hint: `content/moments/<name>/photo.jpg` }))
-  const hero = '/photos/stock/ur-arm.jpg'
+  const hero = asset('/photos/stock/ur-arm.jpg')
   const heroCredit = stockCredits.find(c => c.slug === 'ur-arm')
 
   return (

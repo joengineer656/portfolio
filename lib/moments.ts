@@ -3,6 +3,7 @@ import path from 'node:path'
 import matter from 'gray-matter'
 import { stockCredits } from '@/content/site'
 import { IMAGE_EXT } from './media'
+import { asset } from './base'
 
 // Workshops, challenges and other moments. One folder each: content/moments/<slug>/index.md
 // (frontmatter + a few sentences of text) and a photo named photo.jpg (or .png/.webp) in the same folder.
@@ -44,9 +45,9 @@ function load(slug: string): Moment | null {
     place: asString(data.place),
     text: content.trim(),
     photo: own
-      ? { src: `/media/moments/${slug}/${encodeURIComponent(own)}`, stock: false }
+      ? { src: asset(`/media/moments/${slug}/${encodeURIComponent(own)}`), stock: false }
       : stockSlug
-        ? { src: `/photos/stock/${stockSlug}.jpg`, stock: true, credit: credit && { author: credit.author, license: credit.license, source: credit.source } }
+        ? { src: asset(`/photos/stock/${stockSlug}.jpg`), stock: true, credit: credit && { author: credit.author, license: credit.license, source: credit.source } }
         : null,
   }
 }

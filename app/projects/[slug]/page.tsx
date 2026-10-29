@@ -7,12 +7,15 @@ import { me } from '@/content/site'
 import PhotoWall, { type WallItem } from '@/components/PhotoWall'
 import Socials from '@/components/Socials'
 import Tools from '@/components/Tools'
+import { asset } from '@/lib/base'
 import YouTube, { youTubeId } from '@/components/YouTube'
 
-// Read the project folders on every request, so new photos and edits show up without a rebuild.
-export const dynamic = 'force-dynamic'
-
 type Params = { params: Promise<{ slug: string }> }
+
+// One page per project folder. (Needed for the static GitHub Pages build; harmless otherwise.)
+export function generateStaticParams() {
+  return getProjects().map(p => ({ slug: p.slug }))
+}
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const p = getProject((await params).slug)
@@ -41,7 +44,7 @@ export default async function ProjectPage({ params }: Params) {
     Photo: ({ file, caption }: { file: string; caption?: string }) => (
       <figure className="inline-photo">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`/media/projects/${p.slug}/${encodeURIComponent(file)}`} alt={caption ?? p.title} loading="lazy" />
+        <img src={asset(`/media/projects/${p.slug}/${encodeURIComponent(file)}`)} alt={caption ?? p.title} loading="lazy" />
         {caption && <figcaption>{caption}</figcaption>}
       </figure>
     ),

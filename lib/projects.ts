@@ -3,6 +3,7 @@ import path from 'node:path'
 import matter from 'gray-matter'
 import { categories, type CategoryId } from '@/content/site'
 import { IMAGE_EXT } from './media'
+import { asset } from './base'
 
 // One folder per project: content/projects/<slug>/index.mdx plus any photos in the same folder.
 export const PROJECTS_DIR = path.join(process.cwd(), 'content/projects')
@@ -28,7 +29,7 @@ export type ProjectPhoto = { src: string; caption: string; file: string }
 export type Project = ProjectMeta & { body: string; photos: ProjectPhoto[] }
 
 const asString = (v: unknown, fallback = '') => (typeof v === 'string' ? v : v == null ? fallback : String(v))
-const mediaUrl = (slug: string, file: string) => `/media/projects/${slug}/${encodeURIComponent(file)}`
+const mediaUrl = (slug: string, file: string) => asset(`/media/projects/${slug}/${encodeURIComponent(file)}`)
 const prettify = (file: string) => file.replace(IMAGE_EXT, '').replace(/^\d+[-_.]?/, '').replace(/[-_]+/g, ' ').trim() || 'Project photo'
 
 function listImages(slug: string): string[] {
@@ -53,7 +54,7 @@ function load(slug: string): Project | null {
   const firstPhoto = coverFile ?? gallery[0]
   const cover = firstPhoto
     ? { src: mediaUrl(slug, firstPhoto), stock: false }
-    : { src: stock ? `/photos/stock/${stock}.jpg` : '', stock: true }
+    : { src: stock ? asset(`/photos/stock/${stock}.jpg`) : '', stock: true }
 
   const metrics: Record<string, string> = {}
   for (const [k, v] of Object.entries((data.metrics ?? {}) as Record<string, unknown>)) metrics[k] = asString(v)
