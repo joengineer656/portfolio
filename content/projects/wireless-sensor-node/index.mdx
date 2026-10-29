@@ -1,0 +1,30 @@
+---
+title: "Wireless sensor node"
+category: embedded
+status: "Running"
+year: 2024
+order: 2
+summary: "Battery node that logs temperature and vibration and sleeps between readings."
+stack: ["C", "nRF", "KiCad", "Low power"]
+metrics:
+  Sleep: "8 uA"
+  Battery: "8 months"
+  Range: "60 m"
+result: "Ran for 8 months on one cell. Range drops fast behind concrete."
+stockPhoto: arduino-uno
+links:
+  github: "https://github.com/your-name/wireless-sensor-node"
+  youtube: ""
+---
+
+## The question
+
+How long can one coin cell run a sensor that sends data every minute?
+
+## What I built
+
+A small board with a low-power radio, a sleep-first firmware loop and a vibration sensor that wakes it up.
+
+## What happened
+
+Eight months on one cell. Range is good in the open and poor behind concrete walls.

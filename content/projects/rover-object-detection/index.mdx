@@ -1,0 +1,30 @@
+---
+title: "Object detection on the rover"
+category: software-ai
+status: "Running"
+year: 2025
+order: 3
+summary: "Real-time detection of people and doors so the rover can plan around them."
+stack: ["Python", "YOLO", "ROS 2", "OpenCV"]
+metrics:
+  FPS: "18"
+  Classes: "6"
+  Model: "nano"
+result: "Spots doors and people at 18 fps on a small computer."
+stockPhoto: lidar-robot
+links:
+  github: "https://github.com/your-name/rover-object-detection"
+  youtube: ""
+---
+
+## The question
+
+Can a small computer spot doors and people in real time?
+
+## What I built
+
+A compact detector fed by the rover camera, publishing boxes to ROS 2.
+
+## What happened
+
+Eighteen frames a second. Glass doors are still a blind spot.

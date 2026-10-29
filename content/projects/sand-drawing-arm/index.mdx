@@ -1,0 +1,30 @@
+---
+title: "Sand-drawing arm"
+category: robotics
+status: "Exhibited"
+year: 2025
+order: 2
+summary: "Industrial arm retargeted to rake patterns in sand, driven from a vector drawing."
+stack: ["ROS 2", "MoveIt", "Python", "Inkscape"]
+metrics:
+  Repeats: "12 patterns"
+  Speed: "0.3 m/s"
+  Setup: "20 min"
+result: "Held a straight line across the whole tray. Corners need smoothing."
+stockPhoto: kuka-art
+links:
+  github: "https://github.com/your-name/sand-drawing-arm"
+  youtube: ""
+---
+
+## The question
+
+Can a robot arm draw a clean line in loose sand?
+
+## What I built
+
+Vector paths turned into joint trajectories with MoveIt, with the rake height set by a force limit.
+
+## What happened
+
+Straight lines came out clean. Sharp corners still drag the sand and need smoother blending.

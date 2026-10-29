@@ -1,0 +1,30 @@
+---
+title: "LED matrix controller"
+category: embedded
+status: "Finished"
+year: 2023
+order: 5
+summary: "Driver board for a 64x32 LED panel that shows live robot status."
+stack: ["C++", "Arduino", "PWM", "Shift registers"]
+metrics:
+  Panel: "64 x 32"
+  Refresh: "120 Hz"
+  Colors: "12-bit"
+result: "Smooth at 120 Hz. Wiring was the hard part."
+stockPhoto: arduino-uno
+links:
+  github: "https://github.com/your-name/led-matrix-controller"
+  youtube: ""
+---
+
+## The question
+
+Can a tiny board show robot status on a big panel?
+
+## What I built
+
+Shift registers and timed PWM drive the panel from a small microcontroller.
+
+## What happened
+
+Smooth at 120 Hz. The ribbon cable took longer than the code.

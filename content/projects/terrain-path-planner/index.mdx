@@ -1,0 +1,30 @@
+---
+title: "Terrain path planner"
+category: software-ai
+status: "Prototype"
+year: 2025
+order: 2
+summary: "Planner that picks routes for a rover by cost of slope and loose ground, tested in simulation."
+stack: ["Python", "NumPy", "ROS 2", "Gazebo"]
+metrics:
+  Map: "1 m cells"
+  Planner: "A* + cost"
+  Runs: "200 sims"
+result: "Cut simulated tip-over risk by a third compared with the shortest path."
+stockPhoto: k10-rover
+links:
+  github: "https://github.com/your-name/terrain-path-planner"
+  youtube: ""
+---
+
+## The question
+
+Is the shortest path always the safest for a rover on rough ground?
+
+## What I built
+
+A grid planner whose cost mixes distance, slope and a loose-ground estimate, run over 200 simulated terrains.
+
+## What happened
+
+Tip-over risk dropped by about a third. The cost weights still need tuning on a real vehicle.

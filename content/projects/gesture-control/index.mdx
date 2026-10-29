@@ -1,0 +1,30 @@
+---
+title: "Gesture control with a webcam"
+category: software-ai
+status: "Finished"
+year: 2023
+order: 5
+summary: "Hand gestures from a webcam steer a small robot, with no extra hardware."
+stack: ["Python", "MediaPipe", "OpenCV", "Serial"]
+metrics:
+  Gestures: "8"
+  FPS: "30"
+  Latency: "60 ms"
+result: "Reliable in good light."
+stockPhoto: k10-rover
+links:
+  github: "https://github.com/your-name/gesture-control"
+  youtube: ""
+---
+
+## The question
+
+Can a plain webcam steer a robot?
+
+## What I built
+
+Hand landmarks are turned into eight gestures that send drive commands over serial.
+
+## What happened
+
+Reliable in good light. Backlit rooms break the tracking.

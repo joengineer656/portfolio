@@ -1,0 +1,30 @@
+---
+title: "Self-balancing robot"
+category: robotics
+status: "Running"
+year: 2024
+order: 3
+summary: "Two-wheeled robot that stays upright with an IMU and a tuned control loop."
+stack: ["C++", "PID", "IMU", "STM32"]
+metrics:
+  Loop: "500 Hz"
+  Tilt: "+/- 25 deg"
+  Battery: "90 min"
+result: "Recovers from a shove. Gets confused on carpet."
+stockPhoto: stanford-cart
+links:
+  github: "https://github.com/your-name/balancing-robot"
+  youtube: ""
+---
+
+## The question
+
+Can a cheap IMU keep a two-wheeler upright?
+
+## What I built
+
+A complementary filter feeds a cascaded PID loop running at 500 Hz.
+
+## What happened
+
+It stands for 90 minutes and survives a shove. Thick carpet still throws it off.

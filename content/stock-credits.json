@@ -1,0 +1,112 @@
+[
+  {
+    "slug": "ur-arm",
+    "category": "robotics",
+    "title": "UR16e robot arm.png",
+    "author": "Auledas",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:UR16e_robot_arm.png",
+    "w": 1000,
+    "h": 809
+  },
+  {
+    "slug": "kuka-art",
+    "category": "robotics",
+    "title": "KUKA industrial robotic arm performing \"The Beach\" by Roy Nachum - 01.jpg",
+    "author": "Oleg Yunakov",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:KUKA_industrial_robotic_arm_performing_%22The_Beach%22_by_Roy_Nachum_-_01.jpg",
+    "w": 1000,
+    "h": 1333
+  },
+  {
+    "slug": "pcb-technics",
+    "category": "embedded",
+    "title": "Technics RS-M270x power and microcontroller PCB.jpg",
+    "author": "Retired electrician",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Technics_RS-M270x_power_and_microcontroller_PCB.jpg",
+    "w": 1000,
+    "h": 667
+  },
+  {
+    "slug": "pcb-revox",
+    "category": "embedded",
+    "title": "Revox B215 control PCB - microcontrollers.jpg",
+    "author": "Retired electrician",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Revox_B215_control_PCB_-_microcontrollers.jpg",
+    "w": 1000,
+    "h": 563
+  },
+  {
+    "slug": "arduino-uno",
+    "category": "embedded",
+    "title": "Arduino Uno - R3.jpg",
+    "author": "SparkFun Electronics from Boulder, USA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Arduino_Uno_-_R3.jpg",
+    "w": 1000,
+    "h": 1000
+  },
+  {
+    "slug": "lidar-robot",
+    "category": "software-ai",
+    "title": "LIDAR equipped mobile robot.jpg",
+    "author": "S. Winkvist",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:LIDAR_equipped_mobile_robot.jpg",
+    "w": 1000,
+    "h": 786
+  },
+  {
+    "slug": "k10-rover",
+    "category": "software-ai",
+    "title": "K10 red rover at Haughton Crater.jpg",
+    "author": "NASA",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:K10_red_rover_at_Haughton_Crater.jpg",
+    "w": 1000,
+    "h": 1255
+  },
+  {
+    "slug": "stanford-cart",
+    "category": "software-ai",
+    "title": "Stanford Cart and Hydraulic Arm (5900601910).jpg",
+    "author": "Don DeBold from San Jose, CA, USA",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stanford_Cart_and_Hydraulic_Arm_(5900601910).jpg",
+    "w": 1000,
+    "h": 750
+  },
+  {
+    "slug": "printer-3d",
+    "category": "cad",
+    "title": "3D Printing.jpg",
+    "author": "MukhtaromST",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:3D_Printing.jpg",
+    "w": 1000,
+    "h": 1328
+  },
+  {
+    "slug": "gripper-3d",
+    "category": "cad",
+    "title": "3D printed robotic gripper.jpg",
+    "author": "Simiprof",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:3D_printed_robotic_gripper.jpg",
+    "w": 1000,
+    "h": 1139
+  },
+  {
+    "slug": "cnc-mill",
+    "category": "cad",
+    "title": "CNC milling machine.jpg",
+    "author": "Impressionmanufacturer",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CNC_milling_machine.jpg",
+    "w": 1000,
+    "h": 667
+  }
+]

@@ -1,0 +1,34 @@
+---
+title: "Lidar SLAM rover"
+category: software-ai
+status: "Running"
+year: 2024
+order: 1
+summary: "Differential-drive rover that maps indoor spaces and plans routes around obstacles it has never seen."
+stack: ["ROS 2", "Nav2", "Python", "OpenCV"]
+metrics:
+  Map: "0.05 m cells"
+  Speed: "0.8 m/s"
+  Loop: "closed"
+result: "Maps the flat in 12 minutes. Gets lost near the glass door."
+stockPhoto: lidar-robot
+links:
+  github: "https://github.com/your-name/lidar-slam-rover"
+  youtube: ""
+---
+
+## The question
+
+A cheap lidar plus careful tuning is enough to map a flat.
+
+## What I built
+
+A differential-drive base running Nav2, with loop closure on every lap.
+
+## What happened
+
+Maps the whole flat in 12 minutes. It still gets lost near the glass door.
+
+{/* Add more photos by dropping image files into this folder.
+     Name a photo cover.jpg to make it the card photo. Other images appear in the gallery, sorted by file name.
+     Paste a YouTube link in the frontmatter above, or use <YouTube url="https://youtu.be/..." /> in the text. */}

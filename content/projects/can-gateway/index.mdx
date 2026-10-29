@@ -1,0 +1,30 @@
+---
+title: "CAN bus gateway"
+category: embedded
+status: "Running"
+year: 2024
+order: 4
+summary: "Bridges a CAN bus to USB so a laptop can read and send robot messages."
+stack: ["C", "CAN", "USB", "STM32"]
+metrics:
+  Bitrate: "1 Mbit/s"
+  Latency: "< 1 ms"
+  Nodes: "12"
+result: "Logged a full day with no dropped frames."
+stockPhoto: pcb-technics
+links:
+  github: "https://github.com/your-name/can-gateway"
+  youtube: ""
+---
+
+## The question
+
+Can a laptop watch a robot bus without losing frames?
+
+## What I built
+
+A small STM32 board that timestamps every CAN frame and streams it over USB.
+
+## What happened
+
+A full day of logging with no dropped frames.

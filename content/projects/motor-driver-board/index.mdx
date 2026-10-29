@@ -1,0 +1,34 @@
+---
+title: "Brushless motor driver"
+category: embedded
+status: "Rev B"
+year: 2025
+order: 1
+summary: "Four-layer FOC driver board with current sensing, CAN bus and a bootloader for field updates."
+stack: ["KiCad", "C", "CAN", "FreeRTOS"]
+metrics:
+  Current: "30 A"
+  Layers: "4"
+  Bus: "CAN 1 Mbit/s"
+result: "Rev B runs cool. Rev A did not. See the burn mark."
+stockPhoto: pcb-technics
+links:
+  github: "https://github.com/your-name/motor-driver-board"
+  youtube: ""
+---
+
+## The question
+
+A four-layer board can run field-oriented control at 30 A without a heatsink fight.
+
+## What I built
+
+Current sensing on each phase, a CAN bus for commands, and a bootloader so the firmware can be updated in the field.
+
+## What happened
+
+Rev B runs cool. Rev A did not, and the burn mark is still on the shelf as a reminder.
+
+{/* Add more photos by dropping image files into this folder.
+     Name a photo cover.jpg to make it the card photo. Other images appear in the gallery, sorted by file name.
+     Paste a YouTube link in the frontmatter above, or use <YouTube url="https://youtu.be/..." /> in the text. */}

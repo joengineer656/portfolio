@@ -1,0 +1,30 @@
+---
+title: "Battery management board"
+category: embedded
+status: "Rev A"
+year: 2025
+order: 3
+summary: "Protection and balancing board for a six-cell pack with a CAN status output."
+stack: ["KiCad", "C", "CAN", "Altium"]
+metrics:
+  Cells: "6S"
+  Balance: "100 mA"
+  Cutoff: "40 A"
+result: "Catches overcurrent in under 10 ms."
+stockPhoto: pcb-revox
+links:
+  github: "https://github.com/your-name/battery-management-board"
+  youtube: ""
+---
+
+## The question
+
+Can a small board protect and balance a six-cell pack?
+
+## What I built
+
+Cell monitoring, passive balancing and a fast overcurrent cutoff, reporting over CAN.
+
+## What happened
+
+It trips in under 10 ms. Balancing is slow, so Rev B adds more current.
