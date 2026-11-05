@@ -1,0 +1,31 @@
+---
+title: "PID tuning without tears"
+date: 2026-10-28
+summary: "A practical order for tuning P, I and D on a real machine, with the code I reuse on every robot."
+tags: ["PID", "Control", "C"]
+---
+
+## Why it matters
+
+Almost every robot I build has at least one PID loop. Tuning by guessing works, slowly. Tuning in a fixed order works every time.
+
+## The order
+
+1. Set I and D to zero.
+2. Raise P until the system oscillates, then halve it.
+3. Add D until the overshoot is gone.
+4. Add a little I to remove the last steady error.
+
+## The code
+
+This is the controller I copy into every project. It clamps the integrator so it cannot wind up.
+
+<Code file="pid.c" />
+
+## Try it yourself
+
+The step response I logged while tuning, as a spreadsheet:
+
+<File file="step-response.csv" label="Step response data (CSV)" />
+
+{/* Put a real video here: <YouTube url="https://youtu.be/<your-video-id>" /> */}

@@ -5,10 +5,14 @@ import Socials from '@/components/Socials'
 import { asset } from '@/lib/base'
 import ProjectBoard from '@/components/ProjectBoard'
 import Moments from '@/components/Moments'
+import LessonCards from '@/components/LessonCards'
+import { getLessons } from '@/lib/lessons'
+import Link from 'next/link'
 
 export default function Home() {
   const projects = getProjects()
   const moments = getMoments()
+  const lessons = getLessons()
   // Fill the last row of the moments wall with "your photo here" places (at least one), 4 per row.
   const slotCount = Math.max(1, (4 - (moments.length % 4)) % 4)
   const slots = Array.from({ length: slotCount }, (_, n) => ({ key: `slot-${n}`, hint: `content/moments/<name>/photo.jpg` }))
@@ -18,7 +22,7 @@ export default function Home() {
   return (
     <>
       <nav className="nav" aria-label="Sections">
-        <a href="#projects">Projects</a><a href="#workshops">Workshops</a><a href="#toolbox">Toolbox</a><a href="#contact">Contact</a>
+        <a href="#projects">Projects</a><a href="#workshops">Workshops</a><a href="#lessons">Lessons</a><a href="#toolbox">Toolbox</a><a href="#contact">Contact</a>
       </nav>
 
       <main className="collage">
@@ -45,6 +49,10 @@ export default function Home() {
         <div className="photos">
           <Moments items={moments.map(m => ({ slug: m.slug, title: m.title, kind: m.kind, when: m.when, place: m.place, text: m.text, photo: m.photo?.src ?? null, stock: !!m.photo?.stock, credit: m.photo?.credit }))} slots={slots} />
         </div>
+
+        <h2 className="sectionhead" id="lessons">Lessons</h2>
+        <LessonCards lessons={lessons.slice(0, 4)} />
+        {lessons.length > 4 && <Link className="tile pagetile alllessons" href="/lessons">All {lessons.length} lessons</Link>}
 
         <article className="tile skills" id="toolbox">
           <h2>Toolbox</h2>

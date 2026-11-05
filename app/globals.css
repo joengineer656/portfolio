@@ -236,3 +236,29 @@ p, li { line-height: 1.2; }
 .tool:hover::after, .tool:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 .tool:hover::before, .tool:focus-visible::before { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .tool:hover, .tool:focus-visible { transform: none; } }
+
+/* Documentation pages (projects and lessons): table of contents, files, code */
+.toctile { background: #fff4aa; --r: -.8deg; }
+.toctile ol { list-style: decimal; padding-left: 22px; } .toctile li { margin: 4px 0; font-size: 1.15rem; }
+.toctile a, .filestile a { color: var(--ink); } .toctile a:hover, .filestile a:hover { color: var(--red); }
+.filestile { background: #d9ecd8; }
+.filestile li { margin: 6px 0; font-family: 'Courier Prime', monospace; font-size: .9rem; overflow-wrap: anywhere; } .filestile small { opacity: .65; }
+.writeup h2[id] { scroll-margin-top: 70px; }
+.codefile { margin: 14px 0; box-shadow: 2px 3px 8px rgba(60, 35, 10, .35); }
+.codefile figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 4px 14px; background: var(--blue); color: #fff; font: .85rem 'Courier Prime', monospace; }
+.codefile figcaption a { color: #fff4aa; }
+.codefile pre { margin: 0; max-height: 520px; font-size: .95rem; }
+.filebtn { display: inline-block; margin: 6px 6px 6px 0; padding: 4px 14px; background: var(--ink); color: #fff !important; text-decoration: none; font-family: 'Permanent Marker', cursive; font-size: 1rem; line-height: 1.6; box-shadow: 1px 2px 4px rgba(60, 35, 10, .35); }
+.filebtn::before { content: '\2193  '; } .filebtn:hover { background: var(--red); }
+
+/* Lessons */
+.lessons { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 26px 22px; padding: 6px 4px; }
+.lessoncard { display: flex; flex-direction: column; gap: 6px; background: var(--paper); color: var(--ink); text-decoration: none; }
+.lessoncard:nth-child(3n+2) { --r: .8deg; background: #dce4f5; } .lessoncard:nth-child(3n) { --r: -.8deg; background: #f7d4cf; }
+.lessoncard:hover { transform: rotate(0deg) translateY(-4px); }
+.lessoncard img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
+.lessoncard h3 { font-size: 1.3rem; line-height: 1.1; } .lessoncard p { font-size: 1.1rem; line-height: 1.2; }
+.lessoncard .when { font-family: 'Courier Prime', monospace; font-size: .8rem; opacity: .75; }
+.lessoncard .stackchips { margin-top: auto; gap: 6px; } .lessoncard .stackchips li { padding: 1px 9px; font-size: .75rem; }
+.lessonhead { grid-column: 1 / -1; } .lessonhead .stackchips { margin-top: 14px; }
+.alllessons { grid-column: 1 / -1; justify-self: start; }

@@ -9,6 +9,9 @@ import Socials from '@/components/Socials'
 import Tools from '@/components/Tools'
 import { asset } from '@/lib/base'
 import YouTube, { youTubeId } from '@/components/YouTube'
+import { DocSide, docComponents, docFiles, headings } from '@/components/Doc'
+import path from 'node:path'
+import { PROJECTS_DIR } from '@/lib/projects'
 
 type Params = { params: Promise<{ slug: string }> }
 
@@ -38,17 +41,11 @@ export default async function ProjectPage({ params }: Params) {
   for (let n = items.length; n < WALL_MIN; n++) items.push({ kind: 'slot', key: `slot-${n}`, hint: `content/projects/${p.slug}/${String(n + 1).padStart(2, '0')}-name.jpg` })
 
   const hasVideo = !!(p.links.youtube && youTubeId(p.links.youtube))
-  const mdxComponents = {
-    YouTube,
-    // <Photo file="01-gearbox.jpg" caption="..." /> puts one of this project's photos inside the text.
-    Photo: ({ file, caption }: { file: string; caption?: string }) => (
-      <figure className="inline-photo">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset(`/media/projects/${p.slug}/${encodeURIComponent(file)}`)} alt={caption ?? p.title} loading="lazy" />
-        {caption && <figcaption>{caption}</figcaption>}
-      </figure>
-    ),
-  }
+  // The write-up is the project's full documentation: photos, videos, code and files from its folder (see components/Doc.tsx).
+  const dir = path.join(PROJECTS_DIR, p.slug)
+  const base = asset(`/media/projects/${p.slug}`)
+  const mdxComponents = docComponents(dir, base, p.title)
+  const files = docFiles(dir, base)
 
   return (
     <>
@@ -80,6 +77,7 @@ export default async function ProjectPage({ params }: Params) {
         </article>
 
         <aside className="side">
+          <DocSide toc={headings(p.body)} files={files} />
           {hasVideo && (
             <div className="tile videotile"><h2>Watch it work</h2><YouTube url={p.links.youtube!} title={`${p.title} video`} /></div>
           )}
