@@ -25,8 +25,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return p ? { title: `${p.title} | ${me.name}`, description: p.summary } : { title: 'Project not found' }
 }
 
-const WALL_MIN = 4 // fill the wall to at least this many places with "your photo here" slots
-
 export default async function ProjectPage({ params }: Params) {
   const { slug } = await params
   const p = getProject(slug)
@@ -38,7 +36,6 @@ export default async function ProjectPage({ params }: Params) {
   const next = i >= 0 && i < all.length - 1 ? all[i + 1] : null
 
   const items: WallItem[] = p.photos.map(ph => ({ kind: 'photo', key: ph.src, src: ph.src, caption: ph.caption }))
-  for (let n = items.length; n < WALL_MIN; n++) items.push({ kind: 'slot', key: `slot-${n}`, hint: `content/projects/${p.slug}/${String(n + 1).padStart(2, '0')}-name.jpg` })
 
   const hasVideo = !!(p.links.youtube && youTubeId(p.links.youtube))
   // The write-up is the project's full documentation: photos, videos, code and files from its folder (see components/Doc.tsx).
@@ -95,8 +92,12 @@ export default async function ProjectPage({ params }: Params) {
           </div>
         </aside>
 
-        <h2 className="sectionhead">Photos</h2>
-        <div className="photos"><PhotoWall items={items} /></div>
+        {items.length > 0 && (
+          <>
+            <h2 className="sectionhead">Photos</h2>
+            <div className="photos"><PhotoWall items={items} /></div>
+          </>
+        )}
 
         <div className="pager">
           {prev ? <Link className="tile pagetile" href={`/projects/${prev.slug}`}><small>Previous</small>{prev.title}</Link> : <span />}

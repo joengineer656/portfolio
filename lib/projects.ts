@@ -48,10 +48,13 @@ function load(slug: string): Project | null {
   const captions: Record<string, string> = data.captions && typeof data.captions === 'object' ? data.captions : {}
   const images = listImages(slug)
   const coverFile = images.find(f => f.replace(IMAGE_EXT, '').toLowerCase() === 'cover')
-  // The gallery is every image except the cover, in file-name order.
-  const gallery = images.filter(f => f !== coverFile)
+  // The Photos wall shows only the files listed under `gallery:` in the top block, in that order.
+  const chosen: string[] = Array.isArray(data.gallery) ? data.gallery.map(String) : []
+  for (const f of chosen)
+    if (!images.includes(f)) throw new Error(`content/projects/${slug}/index.mdx: gallery lists "${f}" but that image is not in the folder`)
+  const gallery = chosen
   const stock = asString(data.stockPhoto)
-  const firstPhoto = coverFile ?? gallery[0]
+  const firstPhoto = coverFile ?? gallery[0] ?? images[0]
   const cover = firstPhoto
     ? { src: mediaUrl(slug, firstPhoto), stock: false }
     : { src: stock ? asset(`/photos/stock/${stock}.jpg`) : '', stock: true }
