@@ -287,3 +287,7 @@ html[lang="ar"] body, html[lang="ar"] body *:not(pre):not(code):not(pre *) { fon
 html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-weight: 700; line-height: 1.5; }
 html[lang="ar"] .writeup blockquote { border-left: 0; padding-left: 0; border-right: 4px solid var(--red); padding-right: 14px; }
 pre, code, .codefile pre { direction: ltr; text-align: left; unicode-bidi: plaintext; }
+/* Right-to-left: mirror every scrapbook tilt (photos, tiles, tape, stickers). :where keeps hover rules winning. */
+:where(html[lang="ar"]) :is(.tile, .polaroid, .tool, .social li) { transform: rotate(calc(var(--r, 0deg) * -1)); }
+:where(html[lang="ar"]) .tile::before { transform: rotate(calc(var(--t, -3deg) * -1)); }
+:where(html[lang="ar"]) .inline-photo { transform: rotate(.8deg); }
