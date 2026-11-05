@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import YouTube from './YouTube'
 import { FILE_EXT, listFiles } from '@/lib/media'
+import { T } from '@/lib/i18n'
 
 // Everything a documentation page (project or lesson) can use inside its index.mdx:
 //   <Photo file="01-wiring.jpg" caption="..." />   a photo from the same folder
@@ -12,7 +13,7 @@ import { FILE_EXT, listFiles } from '@/lib/media'
 //   <File file="chassis.step" label="..." />        a download button
 // Plus normal Markdown: ## headings (they build the table of contents), lists, ```code blocks```, links.
 
-const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const slugify = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '')
 const textOf = (n: ReactNode): string =>
   typeof n === 'string' || typeof n === 'number' ? String(n)
     : Array.isArray(n) ? n.map(textOf).join('')
@@ -62,7 +63,7 @@ export function docComponents(dir: string, base: string, title: string) {
       const src = own(file, FILE_EXT, 'Code')
       return (
         <figure className="codefile">
-          <figcaption><span>{file}</span><a href={src} download>Download</a></figcaption>
+          <figcaption><span>{file}</span><a href={src} download><T en="Download" ar="تنزيل" /></a></figcaption>
           <pre><code>{fs.readFileSync(path.join(dir, file), 'utf8')}</code></pre>
         </figure>
       )
@@ -71,18 +72,19 @@ export function docComponents(dir: string, base: string, title: string) {
 }
 
 // Side tiles: "On this page" and "Files". Each hides itself when there is nothing to show.
-export function DocSide({ toc, files }: { toc: { id: string; label: string }[]; files: ReturnType<typeof docFiles> }) {
+export function DocSide({ toc, tocAr, files }: { toc: { id: string; label: string }[]; tocAr?: { id: string; label: string }[]; files: ReturnType<typeof docFiles> }) {
+  const list = (t: typeof toc) => <ol>{t.map(h => <li key={h.id}><a href={`#${h.id}`}>{h.label}</a></li>)}</ol>
   return (
     <>
       {toc.length > 1 && (
         <nav className="tile toctile" aria-label="On this page">
-          <h2>On this page</h2>
-          <ol>{toc.map(h => <li key={h.id}><a href={`#${h.id}`}>{h.label}</a></li>)}</ol>
+          <h2><T en="On this page" ar="في هذه الصفحة" /></h2>
+          <T as="div" en={list(toc)} ar={tocAr && list(tocAr)} />
         </nav>
       )}
       {files.length > 0 && (
         <div className="tile filestile">
-          <h2>Files</h2>
+          <h2><T en="Files" ar="الملفات" /></h2>
           <ul>{files.map(f => <li key={f.file}><a href={f.src} download>{f.file}</a> <small>{f.size}</small></li>)}</ul>
         </div>
       )}

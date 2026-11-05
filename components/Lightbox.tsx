@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { T } from '@/lib/i18n'
 
 export type ZoomPhoto = { src: string; caption: string; credit?: { author: string; license: string; source: string } }
 
@@ -22,10 +23,10 @@ export default function Lightbox({ photo, onClose }: { photo: ZoomPhoto | null; 
           <figcaption>
             {photo.caption}
             {photo.credit && (
-              <small>Photo by {photo.credit.author}, {photo.credit.license}. <a href={photo.credit.source} target="_blank" rel="noreferrer">Source</a></small>
+              <small><T en="Photo by" ar="تصوير" /> {photo.credit.author}, {photo.credit.license}. <a href={photo.credit.source} target="_blank" rel="noreferrer"><T en="Source" ar="المصدر" /></a></small>
             )}
           </figcaption>
-          <button type="button" onClick={onClose}>Close</button>
+          <button type="button" onClick={onClose}><T en="Close" ar="إغلاق" /></button>
         </figure>
       )}
     </dialog>

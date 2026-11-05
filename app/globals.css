@@ -277,4 +277,13 @@ p, li { line-height: 1.2; }
   .detail .writeup, .detail .side { grid-column: 1 / -1; }
   .sidestick { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
 }
-.side .quote { margin: 0; text-align: center; font-size: 1.9rem; line-height: 1.7; font-weight: 700; background: #e9d3a8; font-family: "Amiri", "Noto Naskh Arabic", serif; }
+.side .quote { margin: 0; text-align: center; font-size: 1.9rem; line-height: 1.7; font-weight: 700; font-family: 'Cairo', sans-serif; background: #e9d3a8; }
+
+/* ---- Arabic / English switch (see lib/i18n.tsx, components/LangSwitch.tsx) ---- */
+html:not([lang="ar"]) [data-l="ar"], html[lang="ar"] [data-l="en"] { display: none !important; }
+.nav button.langswitch { background: #f7d4cf; border: 0; padding: 4px 14px; cursor: pointer; color: var(--ink); font-family: 'Cairo', 'Permanent Marker', sans-serif; font-weight: 700; font-size: 1rem; box-shadow: 1px 2px 4px rgba(60, 35, 10, .35); transform: rotate(1.5deg); }
+.nav button.langswitch:hover { background: #fff; }
+html[lang="ar"] body, html[lang="ar"] body *:not(pre):not(code):not(pre *) { font-family: 'Cairo', 'Noto Naskh Arabic', sans-serif; letter-spacing: 0; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-weight: 700; line-height: 1.5; }
+html[lang="ar"] .writeup blockquote { border-left: 0; padding-left: 0; border-right: 4px solid var(--red); padding-right: 14px; }
+pre, code, .codefile pre { direction: ltr; text-align: left; unicode-bidi: plaintext; }

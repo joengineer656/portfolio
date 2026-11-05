@@ -8,11 +8,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Courier+Prime:wght@400;700&family=Permanent+Marker&family=Cairo:wght@400;700&display=swap" />
+        <script dangerouslySetInnerHTML={{ __html: "try{if(localStorage.getItem('lang')==='ar'){var h=document.documentElement;h.lang='ar';h.dir='rtl'}}catch(e){}" }} />
       </head>
       <body>{children}</body>
     </html>

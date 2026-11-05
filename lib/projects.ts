@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { categories, type CategoryId } from '@/content/site'
 import { IMAGE_EXT } from './media'
 import { asset } from './base'
+import { arPath } from './i18n'
 
 // One folder per project: content/projects/<slug>/index.mdx plus any photos in the same folder.
 export const PROJECTS_DIR = path.join(process.cwd(), 'content/projects')
@@ -26,7 +27,9 @@ export type ProjectMeta = {
   cover: { src: string; stock: boolean }
 }
 export type ProjectPhoto = { src: string; caption: string; file: string }
-export type Project = ProjectMeta & { body: string; photos: ProjectPhoto[] }
+// Optional Arabic text from index.ar.mdx (same frontmatter keys: title, status, summary, result, metrics, captions).
+export type ProjectAr = { title: string; status: string; summary: string; result: string; metrics: Record<string, string>; captions: Record<string, string> }
+export type Project = ProjectMeta & { ar?: ProjectAr; body: string; arBody?: string; photos: ProjectPhoto[] }
 
 const asString = (v: unknown, fallback = '') => (typeof v === 'string' ? v : v == null ? fallback : String(v))
 const mediaUrl = (slug: string, file: string) => asset(`/media/projects/${slug}/${encodeURIComponent(file)}`)
@@ -63,8 +66,20 @@ function load(slug: string): Project | null {
   for (const [k, v] of Object.entries((data.metrics ?? {}) as Record<string, unknown>)) metrics[k] = asString(v)
   const links = (data.links ?? {}) as Record<string, unknown>
 
+  let ar: ProjectAr | undefined
+  let arBody: string | undefined
+  if (fs.existsSync(arPath(file))) {
+    const a = matter(fs.readFileSync(arPath(file), 'utf8'))
+    const am: Record<string, string> = {}
+    for (const [k, v] of Object.entries((a.data.metrics ?? {}) as Record<string, unknown>)) am[k] = asString(v)
+    ar = { title: asString(a.data.title), status: asString(a.data.status), summary: asString(a.data.summary), result: asString(a.data.result), metrics: am, captions: a.data.captions && typeof a.data.captions === 'object' ? a.data.captions : {} }
+    arBody = a.content
+  }
+
   return {
     slug,
+    ar,
+    arBody,
     title: asString(data.title),
     category: category.id,
     categoryLabel: category.label,

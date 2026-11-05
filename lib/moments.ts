@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { stockCredits } from '@/content/site'
 import { IMAGE_EXT } from './media'
 import { asset } from './base'
+import { arPath } from './i18n'
 
 // Workshops, challenges and other moments. One folder each: content/moments/<slug>/index.md
 // (frontmatter + a few sentences of text) and a photo named photo.jpg (or .png/.webp) in the same folder.
@@ -18,10 +19,12 @@ export type Moment = {
   place: string
   text: string
   photo: { src: string; stock: boolean; credit?: { author: string; license: string; source: string } } | null
+  ar?: { title: string; kind: string; place: string; text: string; when: string } // from index.ar.md
 }
 
 const asString = (v: unknown) => (v == null ? '' : v instanceof Date ? v.toISOString().slice(0, 10) : String(v))
 const MONTH = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+const MONTH_AR = new Intl.DateTimeFormat('ar', { month: 'long', year: 'numeric', timeZone: 'UTC' })
 
 function load(slug: string): Moment | null {
   const file = ['index.md', 'index.mdx'].map(f => path.join(MOMENTS_DIR, slug, f)).find(f => fs.existsSync(f))
@@ -36,8 +39,15 @@ function load(slug: string): Moment | null {
   const stockSlug = asString(data.stockPhoto)
   const credit = stockCredits.find(c => c.slug === stockSlug)
 
+  let ar: Moment['ar']
+  if (fs.existsSync(arPath(file))) {
+    const a = matter(fs.readFileSync(arPath(file), 'utf8'))
+    ar = { title: asString(a.data.title), kind: asString(a.data.kind), place: asString(a.data.place), text: a.content.trim(), when: parsed && !Number.isNaN(parsed.getTime()) ? MONTH_AR.format(parsed) : '' }
+  }
+
   return {
     slug,
+    ar,
     title: asString(data.title),
     kind: asString(data.kind) || 'Moment',
     date,
