@@ -89,6 +89,7 @@ export default async function ProjectPage({ params }: Params) {
             <h3>Built with</h3>
             <Tools big names={p.stack} />
           </div>
+          <blockquote lang="ar" dir="rtl" className="tile quote">ما أجمل الانشغال بالنَّفسِ<br />وتَركُ الأنفُس</blockquote>
           </div>
         </aside>
 

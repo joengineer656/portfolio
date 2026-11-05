@@ -277,3 +277,4 @@ p, li { line-height: 1.2; }
   .detail .writeup, .detail .side { grid-column: 1 / -1; }
   .sidestick { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
 }
+.side .quote { margin: 0; text-align: center; font-size: 1.9rem; line-height: 1.7; font-weight: 700; background: #e9d3a8; font-family: "Amiri", "Noto Naskh Arabic", serif; }
