@@ -93,8 +93,12 @@ export default async function ProjectPage({ params }: Params) {
           </div>
         </aside>
 
-        <h2 className="sectionhead">Photos</h2>
-        <div className="photos"><PhotoWall items={items} /></div>
+        {!(p.photos.length === 0 && p.body.includes('<Photo ')) && (
+          <>
+            <h2 className="sectionhead">Photos</h2>
+            <div className="photos"><PhotoWall items={items} /></div>
+          </>
+        )}
 
         <div className="pager">
           {prev ? <Link className="tile pagetile" href={`/projects/${prev.slug}`}><small>Previous</small>{prev.title}</Link> : <span />}

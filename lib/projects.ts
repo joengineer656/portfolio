@@ -48,8 +48,8 @@ function load(slug: string): Project | null {
   const captions: Record<string, string> = data.captions && typeof data.captions === 'object' ? data.captions : {}
   const images = listImages(slug)
   const coverFile = images.find(f => f.replace(IMAGE_EXT, '').toLowerCase() === 'cover')
-  // The gallery is every image except the cover, in file-name order.
-  const gallery = images.filter(f => f !== coverFile)
+  // The gallery is every image except the cover and the ones already placed in the text with <Photo>, in file-name order.
+  const gallery = images.filter(f => f !== coverFile && !content.includes(`file="${f}"`))
   const stock = asString(data.stockPhoto)
   const firstPhoto = coverFile ?? gallery[0]
   const cover = firstPhoto
