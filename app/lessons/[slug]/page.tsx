@@ -47,7 +47,9 @@ export default async function LessonPage({ params }: Params) {
           <MDXRemote source={l.body} components={docComponents(dir, base, l.title)} />
         </article>
         <aside className="side">
+          <div className="sidestick">
           <DocSide toc={headings(l.body)} files={docFiles(dir, base)} />
+          </div>
         </aside>
         <div className="pager">
           {older ? <Link className="tile pagetile" href={`/lessons/${older.slug}`}><small>Older</small>{older.title}</Link> : <span />}

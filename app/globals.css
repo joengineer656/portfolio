@@ -267,11 +267,13 @@ p, li { line-height: 1.2; }
 /* No tilt on the long sheet: even half a degree pushes the bottom of a very tall page off the screen. */
 .detail .writeup { grid-column: 1 / 10; font-size: 1.4rem; --r: 0deg; }
 .detail .writeup p, .detail .writeup li { max-width: 75ch; }
-.detail .side { grid-column: 10 / 13; position: sticky; top: 58px; align-self: start; max-height: calc(100vh - 72px); overflow-y: auto; padding: 14px 10px 10px; margin: -14px -10px -10px; scrollbar-width: thin; }
+.detail .side { grid-column: 10 / 13; }
+/* The column fills the row; the box inside sticks while you read but can never leave the row. */
+.sidestick { position: sticky; top: 58px; max-height: calc(100vh - 72px); overflow-y: auto; display: flex; flex-direction: column; gap: clamp(14px, 2vw, 26px); padding: 14px 10px 10px; margin: -14px -10px -10px; scrollbar-width: thin; }
 .side .sourcetile { flex: none; }
-.writeup .inline-photo { max-width: min(100%, 900px); }
+.writeup .inline-photo { max-width: min(100%, 560px); }
 @media (max-width: 1100px) { .detail .writeup { grid-column: 1 / 9; } .detail .side { grid-column: 9 / 13; } }
 @media (max-width: 860px) {
   .detail .writeup, .detail .side { grid-column: 1 / -1; }
-  .detail .side { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
+  .sidestick { position: static; max-height: none; overflow: visible; padding: 0; margin: 0; }
 }

@@ -77,6 +77,7 @@ export default async function ProjectPage({ params }: Params) {
         </article>
 
         <aside className="side">
+          <div className="sidestick">
           <DocSide toc={headings(p.body)} files={files} />
           {hasVideo && (
             <div className="tile videotile"><h2>Watch it work</h2><YouTube url={p.links.youtube!} title={`${p.title} video`} /></div>
@@ -91,14 +92,11 @@ export default async function ProjectPage({ params }: Params) {
             <h3>Built with</h3>
             <Tools big names={p.stack} />
           </div>
+          </div>
         </aside>
 
-        {!(p.photos.length === 0 && p.body.includes('<Photo ')) && (
-          <>
-            <h2 className="sectionhead">Photos</h2>
-            <div className="photos"><PhotoWall items={items} /></div>
-          </>
-        )}
+        <h2 className="sectionhead">Photos</h2>
+        <div className="photos"><PhotoWall items={items} /></div>
 
         <div className="pager">
           {prev ? <Link className="tile pagetile" href={`/projects/${prev.slug}`}><small>Previous</small>{prev.title}</Link> : <span />}
