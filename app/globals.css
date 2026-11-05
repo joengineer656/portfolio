@@ -264,7 +264,8 @@ p, li { line-height: 1.2; }
 .alllessons { grid-column: 1 / -1; justify-self: start; }
 
 /* Documentation pages: a wider reading column, and a side column that stays in view while you read */
-.detail .writeup { grid-column: 1 / 10; font-size: 1.4rem; }
+/* No tilt on the long sheet: even half a degree pushes the bottom of a very tall page off the screen. */
+.detail .writeup { grid-column: 1 / 10; font-size: 1.4rem; --r: 0deg; }
 .detail .writeup p, .detail .writeup li { max-width: 75ch; }
 .detail .side { grid-column: 10 / 13; position: sticky; top: 58px; align-self: start; max-height: calc(100vh - 72px); overflow-y: auto; padding: 14px 10px 10px; margin: -14px -10px -10px; scrollbar-width: thin; }
 .side .sourcetile { flex: none; }
